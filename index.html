@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,20 @@
     <title>Document</title>
 
     <!-- Bootstrap material design [ https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/getting-started/introduction/ ] -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
 
     <!-- icons [ https://fontawesome.com/v4.7.0/icons/ ] -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,12 +35,32 @@
     <!-- local -->
 
     <style>
-        #markdown > *{ margin: 0px; }
-        section { margin: 10px; }
+        #markdown>* {
+            margin: 0px;
+        }
+
+        section {
+            margin: 10px;
+        }
     </style>
 </head>
 
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light m-2">
+
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="./index.html">Markdown<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./cube/index.html">Cube</a>
+            </li>
+        </ul>
+  
+
+    </nav>
 
     <section>
         <div id="toolbar"></div>
@@ -42,7 +71,8 @@
     </section>
 
     <section>
-        <i class="fa fa-shield"> <a href="https://github.com/Arvkus/playground">https://github.com/Arvkus/playground</a></i>
+        <i class="fa fa-shield"> <a
+                href="https://github.com/Arvkus/playground">https://github.com/Arvkus/playground</a></i>
     </section>
 
 </body>
@@ -53,7 +83,7 @@
     var toolbarOptions = [
         [{ header: [1, 2, 3, false] }],
         ["bold", "italic", "underline"],
-        [{ 'list' : 'ordered' }, { 'list' : 'bullet' }],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
         ["image", "code-block"],
         ['clean'],                                        // remove formatting button
     ];
@@ -61,7 +91,7 @@
 
     var quill = new Quill('#editor', {
         modules: {
-            toolbar: toolbarOptions 
+            toolbar: toolbarOptions
         },
         theme: 'snow'
     });
@@ -70,22 +100,22 @@
     var converter = window.markdownit();
     converter.set({ html: true });
 
-    quill.on('text-change', function(delta, oldDelta, source) {
+    quill.on('text-change', function (delta, oldDelta, source) {
 
         if (source == 'api') {
             console.log("An API call triggered this change.");
         } else if (source == 'user') {
             console.log("A user action triggered this change.");
         }
-        document.querySelector("#raw_quill").innerHTML = JSON.stringify( quill.getContents() );
+        document.querySelector("#raw_quill").innerHTML = JSON.stringify(quill.getContents());
         //console.log( document.querySelector("#raw_quill").innerHTML.length );
-        
+
         let html = document.querySelector(".ql-editor").innerHTML;
-        let md = toMarkdown( html )
+        let md = toMarkdown(html)
         console.log(md);
 
-        document.querySelector("#raw_md").innerHTML = md ;
-        document.querySelector("#markdown").innerHTML = converter.render(md) ;
+        document.querySelector("#raw_md").innerHTML = md;
+        document.querySelector("#markdown").innerHTML = converter.render(md);
     });
 
 </script>

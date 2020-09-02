@@ -1,0 +1,42 @@
+:root{
+    --size: calc(80vh);
+    --pradius: calc(var(--size)/2);
+    --nradius: calc(var(--size)/-2);
+}
+
+
+.world{
+    perspective: calc(var(--size)*2);
+    height: 90vh;
+    width: 100%;
+}
+
+.model{
+    transform: translateZ(var(--nradius)) rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
+
+    width: var(--size);
+    height: var(--size);
+    margin: auto;
+    margin-top: 10vh;
+
+    transition-duration: 1000ms;
+    transform-style: preserve-3d;
+}
+
+.face1{transform: translateX( var(--pradius)) rotateY( 90deg); border-color: red;}
+.face2{transform: translateX( var(--nradius)) rotateY(270deg); border-color: red;}
+
+.face3{transform: translateY( var(--pradius)) rotateX(-90deg); border-color: green;}
+.face4{transform: translateY( var(--nradius)) rotateX( 90deg); border-color: green;}
+
+.face5{transform: translateZ( var(--pradius)) rotateY(  0deg); border-color: blue;}
+.face6{transform: translateZ( var(--nradius)) rotateY(180deg); border-color: blue;}
+
+.face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    padding: 20px; 
+    background-color: rgba(240, 240, 240, 0.95);  
+}
