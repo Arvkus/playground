@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax</title>
+
+    <!-- Bootstrap material design [ https://fezvrasta.github.io/bootstrap-material-design/docs/4.0/getting-started/introduction/ ] -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+
+
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+
+        .parallax-container {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1px;
+        }
+      
+        .parallax-layer {
+            background-size: contain;
+            width: 400%;
+            height: 512px;
+        }
+      
+        .parallax-0 { transform: translateZ(-0px) scale(1); z-index: -0; background-image: url('imgs/0.png');}
+        .parallax-1 { transform: translateZ(-1px) scale(2); z-index: -1; background-image: url('imgs/1.png');}
+        .parallax-2 { transform: translateZ(-2px) scale(3); z-index: -2; background-image: url('imgs/2.png');}
+        .parallax-3 { transform: translateZ(-3px) scale(4); z-index: -3; background-image: url('imgs/3.png');}
+        .parallax-4 { transform: translateZ(-4px) scale(5); z-index: -4; background-image: url('imgs/4.png');}
+      </style>
+</head>
+<body>
+    <div class="parallax-container">
+        <div style="height: 512px;">
+            <h1 class="text-center pt-2"> Parallax effect </h1>
+        </div>
+
+        <div class="parallax-layer parallax-4 position-absolute">
+            <div class="position-relative h-100" style="bottom: 100%; background: #703a54"></div>
+        </div>
+        <div class="parallax-layer parallax-3 position-absolute"></div>
+        <div class="parallax-layer parallax-2 position-absolute"></div>
+        <div class="parallax-layer parallax-1 position-absolute">
+            <div class="position-relative h-100" style="top: 100%; background: #451a19"></div>
+        </div>
+
+        <!-- Base layer -->
+        <div class="parallax-layer parallax-0 position-relative"></div>
+
+        <div style="height: 1024px; background: #2f0006">
+            <h1 class="text-center pt-2 text-white"> Parallax effect </h1>
+        </div>
+    </div>
+</body>
+</html>
