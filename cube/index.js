@@ -50,23 +50,4 @@ $(document).ready(function(){
         let id = $(e.currentTarget).prop("id");
         rotate(parseInt(id));
     })
-
-    /*
-   setInterval(function(){
-        let face = Math.floor(Math.random() * 5)+1;
-        rotate(face);
-        //$(".model ").css({transform: "rotate3d(1,1,.25," + angle +"deg)"});
-        //$(".face1").css({transform: "rotateX(" + 45 +"deg)"});
-    },1000)
-    */
-
 })
-
-    //$(".model ").css({transform: "rotateX(0deg) rotateY(-90deg) rotateZ(0deg)"}); // 1
-    //$(".model ").css({transform: "rotateX(0deg) rotateY( 90deg) rotateZ(0deg)"}); // 2
-
-    //$(".model ").css({transform: "rotateX(270deg) rotateY(180deg) rotateZ(180deg)"}); // 3
-    //$(".model ").css({transform: "rotateX(270deg) rotateY(0deg) rotateZ(0deg)"}); // 4
-
-    //$(".model ").css({transform: "rotateX( 0deg) rotateY(0) rotateZ(0deg)"}); // 5
-    //$(".model ").css({transform: "rotateX(180deg) rotateY(0) rotateZ(180deg)"}); // 6
