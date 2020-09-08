@@ -46,25 +46,56 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light m-2">
-
-
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="./quill/index.html">Markdown<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./cube/index.html">Cube</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="./parallax/index.html">Parallax</a>
-            </li>
-        </ul>
-  
-
-    </nav>
-
+    <section>
+        <div id="toolbar"></div>
+        <div id="editor"></div>
+        <div id="raw_quill" style="border: 1px solid rgb(204, 204, 204); border-top: none; padding: 8px;"></div>
+        <div id="raw_md" style="border: 1px solid rgb(204, 204, 204); border-top: none; padding: 8px;"></div>
+        <div id="markdown" style="border: 1px solid rgb(204, 204, 204); border-top: none; padding: 8px;"></div>
+    </section>
 </body>
+
+<script>
+
+    // Toolbar options: https://quilljs.com/docs/modules/toolbar/
+    var toolbarOptions = [
+        [{ header: [1, 2, 3, false] }],
+        ["bold", "italic", "underline"],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        ["image", "code-block"],
+        ['clean'],                                        // remove formatting button
+    ];
+
+
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+
+    var converter = window.markdownit();
+    converter.set({ html: true });
+
+    quill.on('text-change', function (delta, oldDelta, source) {
+
+        if (source == 'api') {
+            console.log("An API call triggered this change.");
+        } else if (source == 'user') {
+            console.log("A user action triggered this change.");
+        }
+        document.querySelector("#raw_quill").innerHTML = JSON.stringify(quill.getContents());
+        //console.log( document.querySelector("#raw_quill").innerHTML.length );
+
+        let html = document.querySelector(".ql-editor").innerHTML;
+        let md = toMarkdown(html)
+        console.log(md);
+
+        document.querySelector("#raw_md").innerHTML = md;
+        document.querySelector("#markdown").innerHTML = converter.render(md);
+    });
+
+</script>
+
 </html>

@@ -29,6 +29,10 @@
             padding:0;
         }
 
+        body{
+            background: #703a54
+        }
+
         .parallax-container {
             height: 100vh;
             overflow-x: hidden;
@@ -38,8 +42,11 @@
       
         .parallax-layer {
             background-size: contain;
-            width: 400%;
+            width: 102%;
+            right: 1%;
             height: 512px;
+            background-position: bottom;
+            background-repeat: repeat-x;
         }
       
         .parallax-0 { transform: translateZ(-0px) scale(1); z-index: -0; background-image: url('imgs/0.png');}
@@ -51,13 +58,11 @@
 </head>
 <body>
     <div class="parallax-container">
-        <div style="height: 512px;">
-            <h1 class="text-center pt-2"> Parallax effect </h1>
+        <div style="height: 500px;">
+            <!-- <div class="text-center text-primary pt-2">Page content header</div> -->
         </div>
 
-        <div class="parallax-layer parallax-4 position-absolute">
-            <div class="position-relative h-100" style="bottom: 100%; background: #703a54"></div>
-        </div>
+        <div class="parallax-layer parallax-4 position-absolute"><h1 class="text-center mt-5">CSS parallax effect demo</h1></div>
         <div class="parallax-layer parallax-3 position-absolute"></div>
         <div class="parallax-layer parallax-2 position-absolute"></div>
         <div class="parallax-layer parallax-1 position-absolute">
@@ -68,7 +73,7 @@
         <div class="parallax-layer parallax-0 position-relative"></div>
 
         <div style="height: 1024px; background: #2f0006">
-            <h1 class="text-center pt-2 text-white"> Parallax effect </h1>
+            <!-- <div class="text-center text-primary pt-2">Page content body</div> -->
         </div>
     </div>
 </body>
